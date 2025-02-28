@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXO和权志龙物料集合</title>
+</head>
+<body>
+    <!-- 这里可以添加EXO的物料，比如图片、视频等 -->
+    <h1>EXO物料</h1>
+    <img src="exo_image.jpg" alt="EXO图片">
+    <video src="exo_video.mp4" controls></video>
+
+    <!-- 这里可以添加权志龙的物料，比如图片、视频等 -->
+    <h1>权志龙物料</h1>
+    <img src="gd_image.jpg" alt="权志龙图片">
+    <video src="gd_video.mp4" controls></video>
+</body>
+</html>
