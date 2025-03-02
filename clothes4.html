@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日穿搭选择</title>
+    <style>
+        /* 整体页面布局和背景图设置 */
+        body {
+            font-family: Arial, sans-serif;
+            /* 设置背景图，你可以将这个链接替换为自己想要的背景图链接 */
+            background-image: url('https://image.example.com/your-background-image.jpg'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            /* 背景图虚化处理增加层次感 */
+            backdrop-filter: blur(3px); 
+        }
+
+        h1 {
+            color: #333;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        #styleSelector {
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.8);
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        #outfitResult {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #outfitResult h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        #outfitResult p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        #outfitResult img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>选择今日穿搭风格</h1>
+    <select id="styleSelector">
+        <option value="default">请选择风格</option>
+        <option value="casual">休闲风</option>
+        <option value="formal">正式风</option>
+        <option value="streetwear">街头风</option>
+        <option value="bohemian">波西米亚风</option>
+    </select>
+    <div id="outfitResult"></div>
+
+    <script>
+        document.getElementById('styleSelector').addEventListener('change', function () {
+            const selectedStyle = this.value;
+            const resultDiv = document.getElementById('outfitResult');
+
+            if (selectedStyle === 'default') {
+                resultDiv.innerHTML = '';
+                return;
+            }
+
+            let outfitInfo = '';
+            let outfitImage = '';
+
+            if (selectedStyle === 'casual') {
+                outfitInfo = '宽松T恤搭配牛仔裤，再配上一双白色运动鞋，轻松打造休闲风。';
+                outfitImage
