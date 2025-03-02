@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>校园穿搭幸运签</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #6b8e23;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #outfit-card {
+            background: linear-gradient(135deg, #f0f4e3, #ffffff);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px dashed #c1d7ac;
+            transition: transform 0.5s ease;
+            min-height: 300px;
+        }
+
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #a8d08d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background: #8fb573;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #5a7d55;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: "🌸 ";
+            padding-left: 30px;
+            font-size: 16px;
+        }
+
+        li {
+            margin: 12px 0;
+            padding: 8px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 5px;
+        }
+
+        .sign {
+            text-align: center;
+            margin-top: 20px;
+            color: #7a9f6e;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍃每日穿搭幸运签</h1>
+        <button class="btn" onclick="drawOutfit()">点击抽取今日穿搭</button>
+        
+        <div id="outfit-card">
+            <h2 id="day-style">等待抽取中...</h2>
+            <ul id="outfit-list">
+                <li>点击上方按钮获取今日穿搭建议</li>
+            </ul>
+            <div class="sign">✨ 今日幸运色已加持 ✨</div>
+        </div>
+    </div>
+
+    <script>
+        const outfits = [
+            {
+                style: "森系文艺风",
+                items: ["亚麻宽松衬衫", "卡其色背带裙", "草编手提包", "棕色小皮鞋", "花朵发夹"]
+            },
+            {
+                style: "校园运动风",
+                items: ["连帽卫衣+白T恤", "束脚运动裤", "老爹鞋", "运动腕带", "双肩背包"]
+            },
+            {
+                style: "甜美少女风",
+                items: ["泡泡袖针织衫", "格纹百褶裙", "堆堆袜+小皮鞋", "毛绒斜挎包", "蝴蝶结发饰"]
+            },
+            {
+                style: "简约中性风",
+                items: ["oversize衬衫", "工装短裤", "帆布腰带", "高帮帆布鞋", "渔夫帽"]
+            },
+            {
+                style: "温柔学姐风",
+                items: ["针织开衫+连衣裙", "珍珠项链", "浅口单鞋", "托特包", "丝质发带"]
+            },
+            {
+                style: "复古学院风",
+                items: ["V领毛衣+衬衫", "格纹半身裙", "乐福鞋", "剑桥包", "金丝眼镜"]
+            },
+            {
+                style: "休闲假日风",
+                items: ["条纹T恤", "牛仔背带裤", "帆布鞋", "草编帽", "帆布手提袋"]
+            }
+        ];
+
+        function drawOutfit() {
+            const card = document.getElementById('outfit-card');
+            card.style.transform = 'rotateY(90deg)';
+            
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * outfits.length);
+                const selected = outfits[randomIndex];
+                
+                document.getElementById('day-style').textContent = selected.style;
+                const list = document.getElementById('outfit-list');
+                list.innerHTML = selected.items.map(item => `<li>${item}</li>`).join('');
+                
+                card.style.transform = 'rotateY(0deg)';
+                card.style.background = `linear-gradient(135deg, ${getRandomPastel()}, #ffffff)`;
+            }, 500);
+        }
+
+        function getRandomPastel() {
+            const hue = Math.floor(Math.random() * 360);
+            return `hsl(${hue}, 60%, 85%)`;
+        }
+    </script>
+</body>
+</html>
