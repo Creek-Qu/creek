@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心情一周食谱生成</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #444;
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+      .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #moodInput {
+            padding: 10px;
+            width: 300px;
+            margin-bottom: 15px;
+        }
+
+        #generateButton {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #recipeList {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        #recipeList th,
+        #recipeList td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>根据心情定制一周食谱</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">常见心情食谱</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <input type="text" id="moodInput" placeholder="请输入你的心情">
+        <button id="generateButton">生成一周食谱</button>
+        <table id="recipeList">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>食谱</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        &copy; 2024 心情食谱网版权所有
+    </footer>
+    <script>
+        document.getElementById('generateButton').addEventListener('click', function () {
+            const mood = document.getElementById('moodInput').value;
+            // 这里应该替换为实际生成食谱的逻辑，目前只是示例
+            const recipes = [
+                { day: '周一', recipe: '番茄意大利面' },
+                { day: '周二', recipe: '红烧肉' },
+                { day: '周三', recipe: '凉拌黄瓜' },
+                { day: '周四', recipe: '清蒸鱼' },
+                { day: '周五', recipe: '虾仁炒饭' },
+                { day: '周六', recipe: '蔬菜沙拉' },
+                { day: '周日', recipe: '玉米排骨汤' }
+            ];
+            const recipeList = document.getElementById('recipeList');
+            const tbody = recipeList.querySelector('tbody');
+            tbody.innerHTML = '';
+            recipes.forEach(recipe => {
+                const row = document.createElement('tr');
+                const dayCell = document.createElement('td');
+                dayCell
