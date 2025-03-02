@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>校园穿搭盲盒</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: url('https://images.unsplash.com/photo-1495195134817-aeb325a55b65') center/cover fixed;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            color: #7BA23F;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #outfit-card {
+            background: rgba(255,255,255,0.9);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px dashed #A8C97F;
+            transition: all 0.5s ease;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .btn {
+            display: block;
+            width: 220px;
+            margin: 20px auto;
+            padding: 15px 25px;
+            background: #8DB595;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background: #6D9875;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .outfit-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        ul {
+            list-style-type: "🍀 ";
+            padding-left: 30px;
+            font-size: 17px;
+            columns: 2;
+            column-gap: 40px;
+        }
+
+        li {
+            margin: 12px 0;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 5px;
+            break-inside: avoid;
+        }
+
+        .style-title {
+            color: #5A6F4B;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 1.8em;
+        }
+
+        .refresh-tip {
+            text-align: center;
+            color: #7BA23F;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌸 每日穿搭盲盒 🌸</h1>
+        <button class="btn" onclick="generateOutfit()">点击开启今日穿搭</button>
+        
+        <div id="outfit-card">
+            <img class="outfit-image" id="style-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="> <!-- 透明占位图 -->
+            <h2 class="style-title" id="style-name">等待抽取中...</h2>
+            <ul id="outfit-list">
+                <li>点击按钮获取你的专属穿搭方案</li>
+            </ul>
+            <div class="refresh-tip">🎉 每天都有新风格哦！</div>
+        </div>
+    </div>
+
+    <script>
+        const outfits = [
+            {
+                style: "森系文艺少女",
+                items: ["亚麻刺绣衬衫", "大地色背带裙", "草编手提包", "棕色小皮鞋", "花朵刺绣袜子"],
+                img: "https://images.unsplash.com/photo-1609505848912-b7c3b38141ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHNlYXJjaHwxfHwlRTYlQTMlQUUlRTclQjMlQkIlRTYlOTYlODclRTglODklQjclRTYlQjAlOTElRTYlOTclOTV8ZW58MHx8fHwxNzE4NjQxMjM1fDA&ixlib=rb-4.0.3&q=80&w=1080"
+            },
+            {
+                style: "校园活力运动风",
+                items: ["拼色连帽卫衣", "束脚运动裤", "气垫跑鞋", "运动发带", "帆布双肩包"],
+                img: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHNlYXJjaHwxfHwlRTYlQTAlQTElRTUlOUMlOTIlRTYlQjQlQkIlRTUlOEElOUIlRTklODElOEIlRTUlOEIlOTUlRTklQTYlQTN8ZW58MHx8fHwxNzE4NjQxMjM2fDA&ixlib=rb-4.0.3&q=80&w=1080"
+            },
+            {
+                style: "甜美学院少女",
+                items: ["娃娃领针织衫", "格纹JK制服裙", "小腿袜+乐福鞋", "毛绒斜挎包", "蝴蝶结发饰"],
+                img: "https://images.unsplash.com/photo-1609505848912-b7c3b38141ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHNlYXJjaHwxfHwlRTclOTQlOUMlRTclQkUlOEUlRTUlQUQlQjglRTklOTklQTIlRTUlQjAlOTElRTUlQTUlQjN8ZW58MHx8fHwxNzE4NjQxMjM3fDA&ixlib=rb-4.0.3&q=80&w=1080"
+            },
+            {
+                style: "复古港风学姐",
+                items: ["oversize牛仔外套", "高腰直筒裤", "老爹鞋", "金属耳环", "腋下包"],
+                img: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHNlYXJjaHwxfHwlRTUlQkUlQTklRTUlOEYlQTglRTYlQjglQUYlRTklQTIlQTglRTUlQUQlQjglRTUlQTclOTB8ZW58MHx8fHwxNzE4NjQxMjM4fDA&ixlib=rb-4.0.3&q=80&w=1080"
+            },
+            {
+                style: "韩系温柔小姐姐",
+                items: ["针织开衫套装", "珍珠项链", "玛丽珍鞋", "帆布托特包", "丝巾发饰"],
+                img: "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHNlYXJjaHwxfHwlRTklOUYlOTMlRTclQjMlQkIlRTYlQkElQUIlRTYlOUUlOTclRTUlQjAlOEYlRTUlQTclOTAlRTUlQTclOTB8ZW58MHx8fHwxNzE4NjQxMjM5fDA&ixlib=rb-4.0.3&q=80&w=1080"
+            }
+        ];
+
+        function generateOutfit() {
+            const card = document.getElementById('outfit-card');
+            card.style.opacity = 0;
+            
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * outfits.length);
+                const selected = outfits[randomIndex];
+                
+                // 预加载图片
+                const img = new Image();
+                img.src = selected.img;
+                img.onload = () => {
+                    document.getElementById('style-image').src = selected.img;
+                    document.getElementById('style-name').textContent = selected.style;
+                    const listItems = selected.items.map(item => `<li>${item}</li>`).join('');
+                    document.getElementById('outfit-list').innerHTML = listItems;
+                    card.style.opacity = 1;
+                };
+            }, 500);
+        }
+    </script>
+</body>
+</html>
