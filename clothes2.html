@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日穿搭风格推荐</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* 动态背景图设置 */
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px;
+        }
+
+        #style-result {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #background-choice {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #background-choice button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>每日穿搭风格推荐</h1>
+    <div id="style-result">
+        <p id="style-text">今日穿搭风格：正在生成...</p>
+    </div>
+
+    <div id="background-choice">
+        <button onclick="setBackground(1)">背景图1</button>
+        <button onclick="setBackground(2)">背景图2</button>
+        <button onclick="setBackground(3)">背景图3</button>
+    </div>
+
+    <script>
+        const styles = ['休闲风', '复古风', '时尚都市风', '甜美风', '酷帅风'];
+        const backgrounds = ['background1.jpg', 'background2.jpg', 'background3.jpg'];
+
+        function randomStyle() {
+            const randomIndex = Math.floor(Math.random() * styles.length);
+            document.getElementById('style-text').textContent = '今日穿搭风格：' + styles[randomIndex];
+        }
+
+        function setBackground(num) {
+            document.body.style.backgroundImage = 'url(' + backgrounds[num - 1] + ')';
+        }
+
+        window.onload = function () {
+            randomStyle();
+        };
+    </script>
+
+</body>
+
+</html>
