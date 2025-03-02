@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日穿搭选择</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #styleSelector {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #outfitResult {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #outfitResult img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>选择今日穿搭风格</h1>
+    <select id="styleSelector">
+        <option value="default">请选择风格</option>
+        <option value="casual">休闲风</option>
+        <option value="formal">正式风</option>
+        <option value="streetwear">街头风</option>
+        <option value="bohemian">波西米亚风</option>
+    </select>
+    <div id="outfitResult"></div>
+
+    <script>
+        document.getElementById('styleSelector').addEventListener('change', function () {
+            const selectedStyle = this.value;
+            const resultDiv = document.getElementById('outfitResult');
+
+            if (selectedStyle === 'default') {
+                resultDiv.innerHTML = '';
+                return;
+            }
+
+            let outfitInfo = '';
+            let outfitImage = '';
+
+            if (selectedStyle === 'casual') {
+                outfitInfo = '宽松T恤搭配牛仔裤，再配上一双白色运动鞋，轻松打造休闲风。';
+                outfitImage = 'https://example.com/casual_outfit.jpg'; // 这里替换为实际休闲风穿搭图片链接
+            } else if (selectedStyle === 'formal') {
+                outfitInfo = '白色衬衫搭配黑色西装裤，外加一件黑色西装外套，搭配一双黑色高跟鞋，尽显正式。';
+                outfitImage = 'https://example.com/formal_outfit.jpg'; // 这里替换为实际正式风穿搭图片链接
+            } else if (selectedStyle ==='streetwear') {
+                outfitInfo = '印花卫衣搭配工装裤，配上一顶棒球帽和一双潮流板鞋，街头风十足。';
+                outfitImage = 'https://example.com/streetwear_outfit.jpg'; // 这里替换为实际街头风穿搭图片链接
+            } else if (selectedStyle === 'bohemian') {
+                outfitInfo = '碎花连衣裙搭配编织草帽，再加上一双凉鞋，充满波西米亚风情。';
+                outfitImage = 'https://example.com/bohemian_outfit.jpg'; // 这里替换为实际波西米亚风穿搭图片链接
+            }
+
+            resultDiv.innerHTML = `
+                <h2>${selectedStyle}穿搭</h2>
+                <p>${outfitInfo}</p>
+                <img src="${outfitImage}" alt="${selectedStyle} Outfit">
+            `;
+        });
+    </script>
+
+</body>
+
+</html>
