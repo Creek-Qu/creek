@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大二学生每日穿搭建议</title>
+    <style>
+        body {
+            background-image: url('https://pic1.zhimg.com/v2-f9c87c9d86c9d9d9d8c8797676967d5c_r.jpg'); /* 这里替换为你自己的背景图链接 */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+      .outfit-section {
+            display: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>大二学生每日穿搭建议</h1>
+    <button onclick="showOutfit('monday')">周一穿搭</button>
+    <div class="outfit-section" id="monday">
+        <h2>周一：简约舒适风</h2>
+        <p>上衣选一件宽松的白色纯棉T恤，它的材质柔软，贴身穿非常舒服。下身搭配一条浅蓝色直筒牛仔裤，修饰腿型又显干练。再配上一双白色的运动鞋，整体干净清爽，很适合在校园里穿梭上课。</p>
+    </div>
+
+    <button onclick="showOutfit('tuesday')">周二穿搭</button>
+    <div class="outfit-section" id="tuesday">
+        <h2>周二：文艺清新风</h2>
+        <p>可以穿一件淡蓝色的雪纺衬衫，上面有些许碎花图案，增添几分浪漫。搭配一条卡其色的半身长裙，走起路来裙摆随风飘动。鞋子选择一双棕色的低跟凉鞋，展现出文艺清新的气质。</p>
+    </div>
+
+    <button onclick="showOutfit('wednesday')">周三穿搭</button>
+    <div class="outfit-section" id="wednesday">
+        <h2>周三：休闲运动风</h2>
+        <p>穿一套运动套装，比如灰色的连帽卫衣搭配黑色运动裤，既舒适又方便活动。脚蹬一双彩色的运动跑鞋，充满活力。再戴上一顶棒球帽，增加时尚感。</p>
+    </div>
+
+    <button onclick="showOutfit('thursday')">周四穿搭</button>
+    <div class="outfit-section" id="thursday">
+        <h2>周四：甜美可爱风</h2>
+        <p>粉色的泡泡袖短上衣，显得俏皮可爱。搭配一条白色的百褶短裙，满满的少女心。配上一双白色的玛丽珍鞋和白色的袜子，甜美度爆表。</p>
+    </div>
+
+    <button onclick="showOutfit('friday')">周五穿搭</button>
+    <div class="outfit-section" id="friday">
+        <h2>周五：个性酷炫风</h2>
+        <p>黑色的露脐短款上衣，彰显个性。搭配一条黑色破洞阔腿裤，帅气又时尚。脚穿一双黑色的马丁靴，外搭一件牛仔外套，让你在校园里成为焦点。</p>
+    </div>
+
+    <script>
+        function showOutfit(outfitId) {
+            const outfitSections = document.querySelectorAll('.outfit-section');
+            outfitSections.forEach(section => {
+                section.style.display = 'none';
+            });
+            const targetSection = document.getElementById(outfitId);
+            target
