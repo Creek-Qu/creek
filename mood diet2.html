@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心情食谱</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5; /* 莫兰迪色调背景 */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+
+        #mood-select {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #mood-select select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #recipe-result {
+            display: none;
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #recipe-result h2 {
+            color: #333;
+        }
+
+        #recipe-result img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        #recipe-result p {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>根据心情选择今日食谱</h1>
+    <div id="mood-select">
+        <select id="mood-input">
+            <option value="default">请选择心情</option>
+            <option value="tired">疲惫/劳累</option>
+            <option value="angry">生气/烦躁</option>
+            <option value="sad">低落/伤心/不高兴</option>
+            <option value="anxious">焦虑/紧张</option>
+            <option value="weak">神经衰弱/萎靡不振/能量低</option>
+            <option value="happy">开心/高兴/快乐</option>
+        </select>
+    </div>
+    <div id="recipe-result">
+        <h2 id="result-title"></h2>
+        <div id="food-items"></div>
+    </div>
+
+    <script>
+        document.getElementById('mood-input').addEventListener('change', function () {
+            const mood = this.value;
+            const resultDiv = document.getElementById('recipe-result');
+            const titleElement = document.getElementById('result-title');
+            const foodItemsDiv = document.getElementById('food-items');
+
+            if (mood === 'default') {
+                resultDiv.style.display = 'none';
+                return;
+            }
+
+            resultDiv.style.display = 'block';
+
+            switch (mood) {
+                case 'tired':
+                    titleElement.textContent = '适合疲惫/劳累时的食物';
+                    foodItemsDiv.innerHTML = `
+                        <div>
+                            <img src="https://pic1.zhimg.com/v2-8c8d85d8d6d869d8776767676d96997_r.jpg" alt="冰美式">
+                            <p>冰美式<br>推荐原因：吃点苦味食物可以刺激神经，让人从疲惫状态中松弛下来，更加有干劲。</p>
+                        </div>
+                        <div>
+                            <img src="https://pic2.zhimg.com/v2-9c99d8d8d8d8d8d8d8d8d8d8d8d8d97_r.jpg" alt="苦瓜">
+                            <p>苦瓜<br>推荐原因：吃点苦味食物可以刺激神经，让人从疲惫状态中松弛下来，更加有干劲。</p>
+                        </div>
+                        <div>
+                            <img src="https://pic3.zhimg.com/v2-7d7d7d7d7d7d7d7d7d7d7d7d7d7d797_r.jpg" alt="芹菜">
+                            <p>芹菜<br>推荐原因：吃点苦味食物可以刺激
